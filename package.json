@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "git:tag": "git tag v`node tasks/get-version.js`",
+    "test": "NODE_ENV=test jest",
     "start": "DEBUG=portal:* node ./bin/www",
     "docker:build": "docker build -t $(node tasks/get-app-name.js):$(node tasks/get-version.js) .",
     "k8s:update:deployment": "VERSION=$(node tasks/get-version.js) envsubst < k8s/template.deployment.yaml > k8s/deployment.yaml"
@@ -15,5 +16,15 @@
     "express": "4.16.4",
     "http-errors": "1.6.3",
     "morgan": "1.9.1"
+  },
+  "devDependencies": {
+    "jest": "^26.5.3",
+    "supertest": "^5.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
