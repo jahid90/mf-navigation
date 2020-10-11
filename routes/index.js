@@ -1,13 +1,42 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
+const components = ['header'];
+
+router.get('/preview/:component', (req, res, next) => {
+
+  const found = components.find(c => c === req.params.component);
+
+  if (!found) {
+    res.render('error', {
+      message: 'The component could not be found',
+      error: {
+        status: '404',
+        stack: ''
+      }
+    })
+  } else {
+    res.render('index', { component: found });
+  }
+
 });
 
-router.get('/header', (req, res, next) => {
-  res.render('header');
+router.get('/component/:component', (req, res, next) => {
+
+  const found = components.find(c => c === req.params.component);
+
+  if (!found) {
+    res.render('error', {
+      message: 'The component could not be found',
+      error: {
+        status: '404',
+        stack: ''
+      }
+    })
+  } else {
+    res.render('components/' + found);
+  }
+
 });
 
 module.exports = router;
