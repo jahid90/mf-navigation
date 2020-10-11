@@ -1,9 +1,12 @@
 {
   "name": "navigation",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=navigation:* node ./bin/www"
+    "git:tag": "git tag v`node tasks/get-version.js`",
+    "start": "DEBUG=portal:* node ./bin/www",
+    "docker:build": "docker build -t $(node tasks/get-app-name.js):$(node tasks/get-version.js) .",
+    "k8s:update:deployment": "VERSION=$(node tasks/get-version.js) envsubst < k8s/template.deployment.yaml > k8s/deployment.yaml"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
