@@ -1,0 +1,14 @@
+{
+    "version": "1",
+    "commands": {
+        "!git:tag": "git tag v`node tasks/get-version.js`",
+        "!start": "DEBUG=navigator:* node ./bin/www",
+        "update:version:major": "node tasks/update-version.js --major",
+        "update:version:minor": "node tasks/update-version.js --minor",
+        "update:version:patch": "node tasks/update-version.js --patch",
+        "!docker:build": "docker build -t $(node tasks/get-app-name.js):$(node tasks/get-version.js) .",
+        "!k8s:update:deployment": "VERSION=$(node tasks/get-version.js) envsubst < k8s/template.deployment.yaml > k8s/deployment.yaml",
+        "k8s:deploy": "kubectl apply -f k8s/deployment.yaml",
+        "k8s:destroy": "kubectl delete -f k8s/deployment.yaml"
+    }
+}
