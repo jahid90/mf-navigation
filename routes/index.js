@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const createError = require('http-errors');
 
-const components = ['header'];
+const components = ['header', 'footer'];
+
+const data = {
+  version: process.env.VERSION || '0.0.0'
+}
 
 router.get('/preview/:component', (req, res, next) => {
 
@@ -11,7 +15,7 @@ router.get('/preview/:component', (req, res, next) => {
   if (!found) {
     next(createError(404));
   } else {
-    res.render('index', { component: found });
+    res.render('index', { ...data, component: found });
   }
 
 });
@@ -23,7 +27,7 @@ router.get('/component/:component', (req, res, next) => {
   if (!found) {
     next(createError(404));
   } else {
-    res.render('components/' + found);
+    res.render('components/' + found, data);
   }
 
 });
