@@ -6,6 +6,7 @@ dependencies:
   http-errors: 1.6.3
   morgan: 1.9.1
 devDependencies:
+  '@jahid90/package': 1.0.1
   jest: 26.5.3
   supertest: 5.0.0
 lockfileVersion: 5.1
@@ -305,6 +306,11 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
+  /@jahid90/package/1.0.1:
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-Emgayh6wutM5/WZwwSQITjgYK3EvC1am0kOOaCrHxupSCdexEjK9PzKreBuTXyCxz+4e9KKMqmVTgzIa4bl+lw==
   /@jest/console/26.5.2:
     dependencies:
       '@jest/types': 26.5.2
@@ -4237,6 +4243,7 @@ packages:
     resolution:
       integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
 specifiers:
+  '@jahid90/package': ^1.0.1
   cookie-parser: 1.4.5
   debug: 2.6.9
   ejs: 2.7.4
